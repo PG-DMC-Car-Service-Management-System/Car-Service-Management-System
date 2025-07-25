@@ -85,3 +85,20 @@ CREATE TABLE feedback (
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (service_id) REFERENCES service_list(id)
 );
+
+-- Admin Users Table
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    role ENUM('admin', 'manager') DEFAULT 'admin',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Sample Data for Services
+INSERT INTO service_list (service, description, status, date_created) VALUES
+('Change Oil', 'Oil change description...', 1, NOW()),
+('Engine Tune Up', 'Engine tune-up description...', 1, NOW()),
+('Overall Checkup', 'Overall checkup description...', 1, NOW()),
+('Tire Replacement', 'Tire replacement description...', 1, NOW()),
+('Wash', 'Car wash description...', 1, NOW());
