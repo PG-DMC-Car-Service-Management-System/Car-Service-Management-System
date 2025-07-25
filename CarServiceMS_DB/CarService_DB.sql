@@ -39,6 +39,25 @@ INSERT INTO categories (category, status, date_created) VALUES
 ('Electric Vehicles', 1, NOW()),
 ('Commercial Vehicles', 1, NOW());
 
+-- Mechanics Table
+CREATE TABLE mechanics_list (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name TEXT NOT NULL,
+    contact VARCHAR(50),
+    email VARCHAR(150),
+    status TINYINT(1) DEFAULT 1,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Services Table
+CREATE TABLE service_list (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    service VARCHAR(100) NOT NULL,
+    description TEXT,
+    status TINYINT DEFAULT 1,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Bookings Table
 CREATE TABLE bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
