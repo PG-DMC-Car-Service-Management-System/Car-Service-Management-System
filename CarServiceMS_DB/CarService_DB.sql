@@ -74,10 +74,7 @@ CREATE TABLE bookings (
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (service_id) REFERENCES service_list(id)
 );
-<<<<<<< HEAD
-=======
 
->>>>>>> b6e2d9aa82ae3a9058573ded4084cbd8f7cc178d
 -- Billing Table
 CREATE TABLE billing (
     bill_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -126,9 +123,5 @@ INSERT INTO service_list (service, description, status, date_created) VALUES
 ('Change Oil', 'Oil change description...', 1, NOW()),
 ('Engine Tune Up', 'Engine tune-up description...', 1, NOW()),
 ('Overall Checkup', 'Overall checkup description...', 1, NOW()),
-<<<<<<< HEAD
 ('Tire Replacement', 'Tire replacement description...', 1, NOW()),
 ('Wash', 'Car wash description...', 1, NOW());
-=======
-('Tire Replacement', 'Tire replacement description...', 1, NOW()),
->>>>>>> b6e2d9aa82ae3a9058573ded4084cbd8f7cc178d
