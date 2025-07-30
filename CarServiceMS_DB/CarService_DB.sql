@@ -126,9 +126,6 @@ INSERT INTO service_list (service, description, status, date_created) VALUES
 ('Change Oil', 'Oil change description...', 1, NOW()),
 ('Engine Tune Up', 'Engine tune-up description...', 1, NOW()),
 ('Overall Checkup', 'Overall checkup description...', 1, NOW()),
-<<<<<<< HEAD
 ('Tire Replacement', 'Tire replacement description...', 1, NOW());
-=======
 ('Tire Replacement', 'Tire replacement description...', 1, NOW()),
 ('Wash', 'Car wash description...', 1, NOW());
->>>>>>> 5088f3ceddb10efb673d46ef8a6e2718a8877997
