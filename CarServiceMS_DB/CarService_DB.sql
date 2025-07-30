@@ -41,6 +41,28 @@ CREATE TABLE service_list (
     status TINYINT DEFAULT 1,
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+<<<<<<< HEAD
+=======
+
+-- Mechanics Table
+CREATE TABLE mechanics_list (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name TEXT NOT NULL,
+    contact VARCHAR(50),
+    email VARCHAR(150),
+    status TINYINT(1) DEFAULT 1,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Services Table
+CREATE TABLE service_list (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    service VARCHAR(100) NOT NULL,
+    description TEXT,
+    status TINYINT DEFAULT 1,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+>>>>>>> 5088f3ceddb10efb673d46ef8a6e2718a8877997
 
 -- Bookings Table
 CREATE TABLE bookings (
@@ -104,4 +126,9 @@ INSERT INTO service_list (service, description, status, date_created) VALUES
 ('Change Oil', 'Oil change description...', 1, NOW()),
 ('Engine Tune Up', 'Engine tune-up description...', 1, NOW()),
 ('Overall Checkup', 'Overall checkup description...', 1, NOW()),
+<<<<<<< HEAD
 ('Tire Replacement', 'Tire replacement description...', 1, NOW());
+=======
+('Tire Replacement', 'Tire replacement description...', 1, NOW()),
+('Wash', 'Car wash description...', 1, NOW());
+>>>>>>> 5088f3ceddb10efb673d46ef8a6e2718a8877997
