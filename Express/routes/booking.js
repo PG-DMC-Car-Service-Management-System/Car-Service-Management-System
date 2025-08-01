@@ -65,10 +65,11 @@ router.delete('/bookings/:id', (req, res) => {
 
 //Optional: Get All Bookings for Admin (with Joins)
 router.get('/bookingGet', (req, res) => {
-  pool.query(`SELECT b.*, c.name AS customer_name, c.vehicle_model, 
-      s.service AS service_name FROM bookings b JOIN customers c ON b.customer_id = c.id
+  pool.query(`SELECT b.*, c.name AS customer_name, c.vehicle_model, s.service AS service_name FROM bookings b JOIN customers c ON b.customer_id = c.id
     JOIN service_list s ON b.service_id = s.id`, (err, results) => {
     if (err) return res.status(500).json(err);
     res.json(results);
   });
 });
+
+module.exports = router;

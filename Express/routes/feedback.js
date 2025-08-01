@@ -21,10 +21,10 @@ router.get('/feedback', (req, res) => {
 });
 
 // Feedback - Update
-app.put('/feedback/:id', (req, res) => {
+router.put('/feedback/:id', (req, res) => {
   const { id } = req.params;
   const { customer_id, service_id, rating, comments } = req.body;
-  db.query(`UPDATE feedback SET customer_id = ?, service_id = ?, rating = ?, comments = ? WHERE id = ?`,
+  pool.query(`UPDATE feedback SET customer_id = ?, service_id = ?, rating = ?, comments = ? WHERE id = ?`,
     [customer_id, service_id, rating, comments, id],
     (err, result) => {
       if (err) return res.status(500).json(err);
@@ -34,8 +34,8 @@ app.put('/feedback/:id', (req, res) => {
 });
 
 /////
-app.get('/feedback', (req, res) => {
-  db.query(`SELECT f.*, c.name AS customer_name, 
+router.get('/feedback', (req, res) => {
+  pool.query(`SELECT f.*, c.name AS customer_name, 
     s.service AS service_name FROM feedback f JOIN customers c ON f.customer_id = c.id JOIN service_list s ON f.service_id = s.id`, 
     (err, results) => {
     if (err) return res.status(500).json(err);
@@ -45,9 +45,9 @@ app.get('/feedback', (req, res) => {
 
 
 // Submit Feedback
-app.post('/feedback', (req, res) => {
+router.post('/feedback', (req, res) => {
   const { customer_id, service_id, rating, comments } = req.body;
-  db.query(`INSERT INTO feedback (customer_id, service_id, rating, comments) VALUES (?, ?, ?, ?)`,
+  pool.query(`INSERT INTO feedback (customer_id, service_id, rating, comments) VALUES (?, ?, ?, ?)`,
     [customer_id, service_id, rating, comments],
     (err, result) => {
       if (err) return res.status(500).json(err);
@@ -58,13 +58,13 @@ app.post('/feedback', (req, res) => {
 
 
 // Feedback - Delete
-app.delete('/feedback/:id', (req, res) => {
+router.delete('/feedback/:id', (req, res) => {
   const { id } = req.params;
-  db.query("DELETE FROM feedback WHERE id = ?", [id], (err, result) => {
+  pool.query("DELETE FROM feedback WHERE id = ?", [id], (err, result) => {
     if (err) return res.status(500).json(err);
     res.json({ message: 'Feedback deleted' });
   });
 });
 
 
-module.exports = app
+module.exports = router
