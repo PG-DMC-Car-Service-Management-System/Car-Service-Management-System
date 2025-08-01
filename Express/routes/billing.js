@@ -34,4 +34,5 @@ router.get('/billing', (req, res) => {
   });
 });
 
+module.exports = router;
 

@@ -1,10 +1,10 @@
-const db = require("../utils/dbpool")
+const pool = require("../utils/dbpool")
 const {apiSuccess, apiError} = require("../utils/apiresult")
 const express = require("express")
-const app = express.Router()
+const router = express.Router()
 
 // Get Active Services
-app.get('/services', (req, res) => {
+router.get('/services', (req, res) => {
   pool.query("SELECT * FROM service_list WHERE status = 1", (err, results) => {
     if (err) return res.status(500).json(err);
     res.json(results);
@@ -14,7 +14,7 @@ app.get('/services', (req, res) => {
 
 
 // Get Active Services (option)
-app.get('/service_requests', (req, res) => {
+router.get('/service_requests', (req, res) => {
   pool.query("SELECT * FROM service_requests", (err, results) => {
     if (err) return res.status(500).json(err);
     res.json(results);
@@ -22,7 +22,7 @@ app.get('/service_requests', (req, res) => {
 });
 
 // Add Service Request
-app.post('/service_requests', (req, res) => {
+router.post('/service_requests', (req, res) => {
   const { owner_name, category_id, service_type, mechanic_id } = req.body;
   pool.query(`INSERT INTO service_requests (owner_name, category_id, service_type, mechanic_id) VALUES (?, ?, ?, ?)`,
     [owner_name, category_id, service_type, mechanic_id],
@@ -34,7 +34,7 @@ app.post('/service_requests', (req, res) => {
 });
 
 // Get Service Requests with Category and Mechanic Info
-app.get('/service_requests', (req, res) => {
+router.get('/service_requests', (req, res) => {
   pool.query(`SELECT sr.*, cat.name AS category_name, m.name AS mechanic_name 
     FROM service_requests sr JOIN categories cat ON sr.category_id = cat.id
     JOIN mechanics_list m ON sr.mechanic_id = m.id`, (err, results) => {
@@ -42,7 +42,5 @@ app.get('/service_requests', (req, res) => {
     res.json(results);
   });
 });
-
-
 
 module.exports = router
