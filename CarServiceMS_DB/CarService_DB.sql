@@ -36,13 +36,14 @@ CREATE TABLE mechanics_list (
 -- Services Table
 CREATE TABLE service_list (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    service VARCHAR(100) NOT NULL,
+    service VARCHAR(100),
     description TEXT,
+    price DECIMAL(10,2),
+    icon VARCHAR(255),          
+    rating FLOAT DEFAULT 0,      
     status TINYINT DEFAULT 1,
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-<<<<<<< HEAD
-=======
 
 -- Mechanics Table
 CREATE TABLE mechanics_list (
