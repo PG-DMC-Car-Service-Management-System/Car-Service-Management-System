@@ -63,7 +63,16 @@ CREATE TABLE service_list (
     status TINYINT DEFAULT 1,
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP
 );
->>>>>>> 5088f3ceddb10efb673d46ef8a6e2718a8877997
+
+-- Table: registration
+CREATE TABLE registration (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 -- Bookings Table
 CREATE TABLE bookings (
