@@ -60,9 +60,14 @@ CREATE TABLE service_list (
     id INT AUTO_INCREMENT PRIMARY KEY,
     service VARCHAR(100) NOT NULL,
     description TEXT,
-    status TINYINT DEFAULT 1,
-    date_created DATETIME DEFAULT CURRENT_TIMESTAMP
+    status TINYINT(1) DEFAULT 1,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    category_id INT,
+    price DECIMAL(10,2),
+    icon VARCHAR(100),
+    rating DECIMAL(2,1)
 );
+
 
 -- Table: registration
 CREATE TABLE registration (
@@ -132,10 +137,14 @@ CREATE TABLE admins (
 );
 
 -- Sample Data for Services
-INSERT INTO service_list (service, description, status, date_created) VALUES
-('Change Oil', 'Oil change description...', 1, NOW()),
-('Engine Tune Up', 'Engine tune-up description...', 1, NOW()),
-('Overall Checkup', 'Overall checkup description...', 1, NOW()),
-('Tire Replacement', 'Tire replacement description...', 1, NOW());
-('Tire Replacement', 'Tire replacement description...', 1, NOW()),
-('Wash', 'Car wash description...', 1, NOW());
+INSERT INTO service_list (service, price, description, icon, category_id, rating)
+VALUES
+('Change Oil', 2550.0, 'Complete oil change with filter replacement', 'local-gas-station', 1, 4.8),
+('Engine Tune Up', 5250.0, 'Complete engine maintenance and optimization', 'settings', 2, 4.9),
+('Overall Checkup', 6280.0, 'Complete Overall Checkup', 'search', 3, 4.7),
+('Tire Replacement', 5350.0, 'Tire Replacement with Brake inspection and pad replacement', 'tire_repair', 4, 4.6),
+('Tire Balancing', 2850.0, 'Professional tire rotation and balancing', 'trip-origin', 5, 4.6),
+('Wash', 5800.0, 'Complete Clean and Wash', 'local_car_wash', 6, 4.5),
+('Battery Check', 4999.0, 'Battery health assessment and replacement if needed', 'battery-charging-full', 7, 4.6),
+('Brake Service', 5900.0, 'Brake system inspection and maintenance', 'pan-tool', 8, 4.6),
+('AC Service', 6500.0, 'Complete AC system inspection and maintenance', 'ac-unit', 9, 4.6);
